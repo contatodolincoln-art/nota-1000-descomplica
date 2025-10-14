@@ -1,0 +1,48 @@
+# =========================
+# 1️⃣ Etapa: Build do Frontend (React/TypeScript)
+# =========================
+FROM node:20 AS frontend-builder
+
+# Define diretório de trabalho
+WORKDIR /app/frontend
+
+# Copia os arquivos do frontend
+COPY frontend/package*.json ./
+RUN npm install
+
+# Copia o restante do código e gera o build
+COPY frontend/ ./
+RUN npm run build
+
+# =========================
+# 2️⃣ Etapa: Backend (Flask)
+# =========================
+FROM python:3.11-slim
+
+# Define diretório de trabalho
+WORKDIR /app
+
+# Instala dependências do sistema
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copia os arquivos do backend
+COPY backend/ ./backend/
+COPY requirements.txt ./requirements.txt
+
+# Instala dependências Python
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia o build do frontend (feito na etapa 1)
+COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
+
+# Define variáveis de ambiente
+ENV PORT=8080
+ENV PYTHONUNBUFFERED=1
+
+# Expõe a porta usada pelo Flask
+EXPOSE 8080
+
+# Comando para rodar o backend
+CMD ["python", "backend/app.py"]
