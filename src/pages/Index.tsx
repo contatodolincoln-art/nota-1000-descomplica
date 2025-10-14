@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { FeatureCard } from "@/components/FeatureCard";
+import { StudentTestimonialCard } from "@/components/StudentTestimonialCard";
+import { VideoTestimonialCarousel } from "@/components/VideoTestimonialCarousel";
 import {
   CheckCircle2,
   Award,
@@ -16,6 +18,9 @@ import {
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import teacherImg from "@/assets/teacher-marcela.jpg";
+import studentBeatriz from "@/assets/student-beatriz.jpg";
+import studentLucas from "@/assets/student-lucas.jpg";
+import studentCamila from "@/assets/student-camila.jpg";
 
 const Index = () => {
   const scrollToCheckout = () => {
@@ -273,6 +278,125 @@ const Index = () => {
                 year="Enem 2024"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Relatos com Foto - Seção 1 */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto space-y-12">
+            <div className="text-center space-y-4 animate-fade-in">
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Histórias de <span className="text-primary">Sucesso</span>
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Conheça quem transformou o sonho em realidade com o método da professora Marcela
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <StudentTestimonialCard
+                photo={studentBeatriz}
+                name="Beatriz Oliveira"
+                year="Turma de 2024"
+                score={980}
+                testimonial="A professora Marcela me ensinou a escrever com clareza e objetividade. Passei em Direito na USP!"
+              />
+              <StudentTestimonialCard
+                photo={studentLucas}
+                name="Lucas Mendes"
+                year="Turma de 2023"
+                score={1000}
+                testimonial="Nota máxima! O método é simples e eficiente. Aprendi em 4 horas o que não aprendi em anos."
+              />
+              <StudentTestimonialCard
+                photo={studentCamila}
+                name="Camila Rodrigues"
+                year="Turma de 2024"
+                score={960}
+                testimonial="A aula mudou minha forma de escrever. Consegui 960 pontos e realizei o sonho de cursar Medicina."
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+                name="Rafael Silva"
+                year="Turma de 2023"
+                score={940}
+                testimonial="Método prático e direto ao ponto. A professora realmente domina o que ensina. Recomendo demais!"
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop"
+                name="Mariana Costa"
+                year="Turma de 2024"
+                score={970}
+                testimonial="Aprendi os segredos da redação nota mil. Consegui 970 pontos e hoje estudo Engenharia na UFRJ."
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop"
+                name="Gabriel Ferreira"
+                year="Turma de 2023"
+                score={990}
+                testimonial="Incrível! A professora simplifica o complexo. Minha nota foi 990 e hoje estou na federal dos meus sonhos."
+              />
+            </div>
+
+            <div className="text-center animate-fade-in">
+              <button className="text-primary font-semibold text-lg hover:underline inline-flex items-center gap-2 hover:gap-3 transition-all">
+                Ver mais histórias de sucesso
+                <span className="text-xl">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Vídeos de Depoimentos - Seção 2 */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto space-y-12">
+            <div className="text-center space-y-4 animate-fade-in">
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Eles chegaram lá — e <span className="text-secondary">você também pode!</span>
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Assista aos depoimentos de quem viveu essa transformação
+              </p>
+            </div>
+
+            <VideoTestimonialCarousel
+              videos={[
+                {
+                  thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=450&fit=crop",
+                  name: "Amanda Silva",
+                  year: "Turma 2024",
+                  subtitle: "De 720 para 980 pontos em 3 meses",
+                },
+                {
+                  thumbnail: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=450&fit=crop",
+                  name: "Thiago Santos",
+                  year: "Turma 2023",
+                  subtitle: "Nota 1000 e aprovação em Medicina",
+                },
+                {
+                  thumbnail: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&h=450&fit=crop",
+                  name: "Carolina Alves",
+                  year: "Turma 2024",
+                  subtitle: "970 pontos - Aprovada em Direito USP",
+                },
+                {
+                  thumbnail: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=800&h=450&fit=crop",
+                  name: "Felipe Oliveira",
+                  year: "Turma 2023",
+                  subtitle: "De 650 para 940 - Método que funciona",
+                },
+                {
+                  thumbnail: "https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=800&h=450&fit=crop",
+                  name: "Isabela Martins",
+                  year: "Turma 2024",
+                  subtitle: "990 pontos e vaga na federal",
+                },
+              ]}
+            />
           </div>
         </div>
       </section>
