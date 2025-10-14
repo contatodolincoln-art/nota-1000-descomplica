@@ -295,7 +295,7 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
               <StudentTestimonialCard
                 photo={studentBeatriz}
                 name="Beatriz Oliveira"
@@ -337,6 +337,69 @@ const Index = () => {
                 year="Turma de 2023"
                 score={990}
                 testimonial="Incrível! A professora simplifica o complexo. Minha nota foi 990 e hoje estou na federal dos meus sonhos."
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop"
+                name="Fernanda Lima"
+                year="Turma de 2024"
+                score={950}
+                testimonial="Método transformador! Minha redação evoluiu muito e consegui a nota que precisava."
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&h=400&fit=crop"
+                name="Diego Souza"
+                year="Turma de 2023"
+                score={920}
+                testimonial="Aula objetiva e eficiente. Aprendi técnicas que realmente fazem diferença na nota."
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop"
+                name="Juliana Pereira"
+                year="Turma de 2024"
+                score={975}
+                testimonial="975 pontos! A professora ensina com clareza e domínio total do conteúdo."
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&h=400&fit=crop"
+                name="Rodrigo Almeida"
+                year="Turma de 2023"
+                score={965}
+                testimonial="Resultado incrível! O método funciona e os repertórios fizeram toda diferença."
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop"
+                name="Paula Martins"
+                year="Turma de 2024"
+                score={935}
+                testimonial="Aprendi em poucas horas o essencial para tirar uma ótima nota. Muito obrigada!"
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop"
+                name="Vinicius Costa"
+                year="Turma de 2023"
+                score={955}
+                testimonial="Professora incrível! Método simples e eficaz que me levou à aprovação."
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?w=400&h=400&fit=crop"
+                name="Letícia Ramos"
+                year="Turma de 2024"
+                score={945}
+                testimonial="A melhor decisão que tomei! Consegui 945 e passei no curso dos meus sonhos."
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop"
+                name="Matheus Rocha"
+                year="Turma de 2023"
+                score={985}
+                testimonial="985 pontos! O aulão realmente cumpre o que promete. Método excepcional!"
+              />
+              <StudentTestimonialCard
+                photo="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop"
+                name="Bruna Carvalho"
+                year="Turma de 2024"
+                score={930}
+                testimonial="Conteúdo direto e prático. Exatamente o que eu precisava para melhorar minha nota."
               />
             </div>
 
