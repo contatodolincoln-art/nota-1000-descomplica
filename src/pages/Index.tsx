@@ -32,12 +32,7 @@ const Index = () => {
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
       <section
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${heroBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
       >
         <div className="container mx-auto px-4 py-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
@@ -50,24 +45,24 @@ const Index = () => {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
               Sim, é possível conquistar uma{" "}
               <span className="text-secondary">redação nota 1000</span> no Enem.
             </h1>
 
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Descubra, em uma única aula, o método que já fez milhares de alunos passarem dos 900
               pontos — e que acertou o tema do Enem 3 vezes.
             </p>
 
             {/* Video Placeholder */}
-            <div className="bg-accent/20 backdrop-blur-sm rounded-2xl p-8 max-w-3xl mx-auto border-2 border-primary/30 animate-scale-in">
-              <div className="aspect-video bg-accent/40 rounded-lg flex items-center justify-center">
+            <div className="bg-muted/30 rounded-2xl p-8 max-w-3xl mx-auto border-2 border-primary/30 animate-scale-in">
+              <div className="aspect-video bg-muted/50 rounded-lg flex items-center justify-center">
                 <div className="text-center space-y-3">
-                  <div className="w-20 h-20 rounded-full bg-primary/80 flex items-center justify-center mx-auto hover:scale-110 transition-transform cursor-pointer shadow-cyan">
+                  <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center mx-auto hover:scale-110 transition-transform cursor-pointer shadow-cyan">
                     <div className="w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
                   </div>
-                  <p className="text-white text-lg font-medium">
+                  <p className="text-foreground text-lg font-medium">
                     Um recado da professora Marcela para você
                   </p>
                 </div>
@@ -84,7 +79,7 @@ const Index = () => {
                 onClick={() => document.getElementById("content")?.scrollIntoView({ behavior: "smooth" })}
                 variant="outline"
                 size="lg"
-                className="text-lg px-8 py-7 bg-white/10 text-white border-white/30 hover:bg-white hover:text-foreground"
+                className="text-lg px-8 py-7"
               >
                 Ver o que você vai aprender
               </Button>
