@@ -3,10 +3,9 @@
 # =========================
 FROM node:20 AS frontend-builder
 
-# Define diretório de trabalho
 WORKDIR /app/frontend
 
-# Copia os arquivos do frontend
+# Instala dependências
 COPY frontend/package*.json ./
 RUN npm install
 
@@ -19,7 +18,6 @@ RUN npm run build
 # =========================
 FROM python:3.11-slim
 
-# Define diretório de trabalho
 WORKDIR /app
 
 # Instala dependências do sistema
@@ -27,11 +25,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copia os arquivos do backend
+# Copia backend e dependências
 COPY backend/ ./backend/
-COPY requirements.txt ./requirements.txt
+COPY backend/requirements.txt ./requirements.txt
 
-# Instala dependências Python
+# Instala pacotes Python
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia o build do frontend (feito na etapa 1)
@@ -41,8 +39,7 @@ COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
 ENV PORT=8080
 ENV PYTHONUNBUFFERED=1
 
-# Expõe a porta usada pelo Flask
 EXPOSE 8080
 
-# Comando para rodar o backend
-CMD ["python", "backend/app.py"]
+# Usa gunicorn para produção
+CMD exec gunicorn --chdir backend --bind :$PORT app:app
