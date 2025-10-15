@@ -63,7 +63,7 @@ const Index = () => {
                     <div className="w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
                   </div>
                   <p className="text-foreground text-lg font-medium">
-                    Um recado da professora Marcela para você
+                    Um recado da professora Jéssica para você
                   </p>
                 </div>
               </div>
