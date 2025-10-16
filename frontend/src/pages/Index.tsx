@@ -4,6 +4,7 @@ import { TestimonialCard } from "@/components/TestimonialCard";
 import { FeatureCard } from "@/components/FeatureCard";
 import { StudentTestimonialCard } from "@/components/StudentTestimonialCard";
 import { VideoTestimonialCarousel } from "@/components/VideoTestimonialCarousel";
+import { FloatingCTA } from "@/components/FloatingCTA";
 import {
   CheckCircle2,
   Award,
@@ -30,112 +31,161 @@ const Index = () => {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
-      >
-        <div className="container mx-auto px-4 py-20 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
-            <div className="flex gap-4 justify-center flex-wrap">
-              <span className="bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-bold shadow-yellow">
-                19 anos de experiência
+      <FloatingCTA onClick={scrollToCheckout} />
+      
+      {/* Hero Section - Redesigned Premium */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background via-background to-muted/20">
+        {/* Subtle animated background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            {/* Badges */}
+            <div className="flex gap-3 justify-center flex-wrap mb-12 animate-fade-in">
+              <span className="bg-secondary text-secondary-foreground px-5 py-2.5 rounded-full text-sm font-bold shadow-yellow-sm hover:scale-105 transition-transform">
+                ✨ 19 anos de experiência
               </span>
-              <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-bold shadow-cyan">
-                +2.000 alunos impactados
+              <span className="bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-bold shadow-cyan-sm hover:scale-105 transition-transform">
+                🎯 +2.000 alunos impactados
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
-              Sim, é possível conquistar uma{" "}
-              <span className="text-secondary">redação nota 1000</span> no Enem.
-            </h1>
-
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Descubra, em uma única aula, o método que já fez milhares de alunos passarem dos 900
-              pontos — e que acertou o tema do Enem 3 vezes.
-            </p>
-
-            {/* Video Placeholder */}
-            <div className="bg-muted/30 rounded-2xl p-8 max-w-3xl mx-auto border-2 border-primary/30 animate-scale-in">
-              <div className="aspect-video bg-muted/50 rounded-lg flex items-center justify-center">
-                <div className="text-center space-y-3">
-                  <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center mx-auto hover:scale-110 transition-transform cursor-pointer shadow-cyan">
-                    <div className="w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
+            {/* Main Grid Layout */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Side - Video */}
+              <div className="order-2 lg:order-1 animate-slide-in-left">
+                <div className="bg-gradient-to-br from-white to-muted/30 backdrop-blur-sm rounded-3xl p-6 shadow-premium border border-border/50">
+                  <div className="aspect-video bg-gradient-to-br from-muted/80 to-muted/40 rounded-2xl flex items-center justify-center relative overflow-hidden group">
+                    {/* Play button with glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="relative z-10 text-center space-y-4">
+                      <div className="w-24 h-24 rounded-full bg-primary flex items-center justify-center mx-auto hover:scale-110 transition-all duration-300 cursor-pointer shadow-cyan animate-pulse-glow">
+                        <div className="w-0 h-0 border-l-[24px] border-l-white border-t-[16px] border-t-transparent border-b-[16px] border-b-transparent ml-2"></div>
+                      </div>
+                      <p className="text-foreground text-lg font-semibold px-4">
+                        🎬 Um recado da professora Jéssica para você
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-foreground text-lg font-medium">
-                    Um recado da professora Jéssica para você
-                  </p>
+                  <div className="mt-4 text-center">
+                    <p className="text-sm text-muted-foreground">⏱️ Assista agora e descubra o método</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <CountdownTimer />
+              {/* Right Side - Text & CTA */}
+              <div className="order-1 lg:order-2 space-y-8 animate-slide-in-right">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] tracking-tight">
+                  Conquiste uma{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary to-secondary/80 animate-shimmer bg-[length:200%_auto]">
+                    redação nota 1000
+                  </span>{" "}
+                  no Enem
+                </h1>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button onClick={scrollToCheckout} variant="hero" size="lg" className="text-lg px-12 py-7">
-                Garantir minha vaga por R$ 39,90
-              </Button>
-              <Button
-                onClick={() => document.getElementById("content")?.scrollIntoView({ behavior: "smooth" })}
-                variant="outline"
-                size="lg"
-                className="text-lg px-8 py-7"
-              >
-                Ver o que você vai aprender
-              </Button>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
+                  Descubra o método que já transformou{" "}
+                  <span className="font-semibold text-foreground">milhares de alunos</span> em{" "}
+                  <span className="font-semibold text-foreground">aprovados</span> — e que acertou o tema do Enem{" "}
+                  <span className="font-semibold text-primary">3 vezes</span>.
+                </p>
+
+                <CountdownTimer />
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <Button 
+                    onClick={scrollToCheckout} 
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-10 py-7 shadow-cyan hover:shadow-cyan-sm hover:scale-105 transition-all duration-300 animate-pulse-soft"
+                  >
+                    💎 Garantir vaga por R$ 39,90
+                  </Button>
+                  <Button
+                    onClick={() => document.getElementById("content")?.scrollIntoView({ behavior: "smooth" })}
+                    variant="outline"
+                    className="text-lg px-8 py-7 border-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+                  >
+                    📚 Ver conteúdo completo
+                  </Button>
+                </div>
+
+                {/* Trust indicators */}
+                <div className="flex flex-wrap gap-6 pt-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                    <span>Acesso imediato</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                    <span>Gravação vitalícia</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                    <span>Bônus inclusos</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Sobre a Professora */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section className="py-24 md:py-32 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
+        {/* Parallax background effect */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/3 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="animate-slide-in-left">
-                <img
-                  src={teacherImg}
-                  alt="Professora Marcela"
-                  className="rounded-2xl shadow-cyan w-full max-w-md mx-auto"
-                />
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-2xl opacity-30"></div>
+                  <img
+                    src={teacherImg}
+                    alt="Professora Jéssica"
+                    className="relative rounded-3xl shadow-premium w-full max-w-md mx-auto hover:scale-[1.02] transition-transform duration-500"
+                  />
+                </div>
               </div>
-              <div className="space-y-6 animate-fade-in">
-                <h2 className="text-4xl md:text-5xl font-bold">
-                  Conheça a Professora <span className="text-primary">Marcela</span>
-                </h2>
-                <blockquote className="text-xl italic text-muted-foreground border-l-4 border-primary pl-4">
-                  "Amar ensinar é o que me move. Ajudar alunos a vencerem o Enem é o que me
-                  realiza."
-                </blockquote>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-start gap-3">
-                    <Award className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="font-bold">19 anos</p>
-                      <p className="text-sm text-muted-foreground">de experiência</p>
-                    </div>
+              
+              <div className="space-y-8 animate-fade-in-delayed">
+                <div className="space-y-4">
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    Conheça a Professora{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">
+                      Jéssica
+                    </span>
+                  </h2>
+                  <blockquote className="text-xl md:text-2xl text-muted-foreground border-l-4 border-primary pl-6 py-2 italic leading-relaxed">
+                    "Transformar sonhos em aprovações é o que me move. Cada aluno que alcança nota 1000 é uma vitória que celebro."
+                  </blockquote>
+                </div>
+
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-5 hover:shadow-cyan-sm transition-all duration-300 group">
+                    <Award className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
+                    <p className="font-bold text-xl mb-1">19 anos</p>
+                    <p className="text-sm text-muted-foreground">de experiência</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="font-bold">3 vezes</p>
-                      <p className="text-sm text-muted-foreground">acertando o tema</p>
-                    </div>
+                  <div className="bg-gradient-to-br from-secondary/5 to-secondary/10 rounded-2xl p-5 hover:shadow-yellow-sm transition-all duration-300 group">
+                    <Target className="w-8 h-8 text-secondary mb-3 group-hover:scale-110 transition-transform" />
+                    <p className="font-bold text-xl mb-1">3 vezes</p>
+                    <p className="text-sm text-muted-foreground">acertou o tema</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="font-bold">+2.000 alunos</p>
-                      <p className="text-sm text-muted-foreground">impactados</p>
-                    </div>
+                  <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-5 hover:shadow-cyan-sm transition-all duration-300 group">
+                    <Users className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
+                    <p className="font-bold text-xl mb-1">+2.000</p>
+                    <p className="text-sm text-muted-foreground">alunos aprovados</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Lightbulb className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="font-bold">Método</p>
-                      <p className="text-sm text-muted-foreground">prático e direto</p>
-                    </div>
+                  <div className="bg-gradient-to-br from-secondary/5 to-secondary/10 rounded-2xl p-5 hover:shadow-yellow-sm transition-all duration-300 group">
+                    <Lightbulb className="w-8 h-8 text-secondary mb-3 group-hover:scale-110 transition-transform" />
+                    <p className="font-bold text-xl mb-1">Método único</p>
+                    <p className="text-sm text-muted-foreground">comprovado</p>
                   </div>
                 </div>
               </div>
@@ -145,25 +195,30 @@ const Index = () => {
       </section>
 
       {/* O que você vai aprender */}
-      <section id="content" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto space-y-16">
-            <div className="text-center space-y-4 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold">
-                O que você vai <span className="text-primary">aprender</span>
+      <section id="content" className="py-24 md:py-32 bg-gradient-to-b from-background via-muted/10 to-background relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-6xl mx-auto space-y-20">
+            <div className="text-center space-y-6 animate-fade-in max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                O que você vai <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">aprender</span>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Dois dias intensivos com tudo que você precisa para alcançar a nota máxima
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                Dois dias intensivos com <span className="font-semibold text-foreground">tudo que você precisa</span> para alcançar a nota máxima
               </p>
             </div>
 
             {/* Sexta-feira */}
-            <div className="bg-primary/5 rounded-3xl p-8 md:p-12 border-2 border-primary/20 animate-fade-in-up">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="bg-primary text-primary-foreground px-6 py-3 rounded-xl font-bold text-lg shadow-cyan">
-                  Sexta - 31/10
+            <div className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-8 md:p-12 border-2 border-primary/20 shadow-cyan-sm hover:shadow-cyan transition-all duration-500 animate-fade-in-up">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-10">
+                <div className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-8 py-4 rounded-2xl font-bold text-xl shadow-cyan-sm">
+                  📅 Sexta - 31/10
                 </div>
-                <span className="text-muted-foreground font-medium">4 horas de conteúdo</span>
+                <span className="text-muted-foreground font-semibold text-lg">⏱️ 4 horas de conteúdo</span>
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <FeatureCard
@@ -200,12 +255,12 @@ const Index = () => {
             </div>
 
             {/* Sábado */}
-            <div className="bg-secondary/5 rounded-3xl p-8 md:p-12 border-2 border-secondary/20 animate-fade-in-up">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="bg-secondary text-secondary-foreground px-6 py-3 rounded-xl font-bold text-lg shadow-yellow">
-                  Sábado - 01/11
+            <div className="bg-gradient-to-br from-secondary/5 via-secondary/10 to-secondary/5 rounded-3xl p-8 md:p-12 border-2 border-secondary/20 shadow-yellow-sm hover:shadow-yellow transition-all duration-500 animate-fade-in-up">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-10">
+                <div className="bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground px-8 py-4 rounded-2xl font-bold text-xl shadow-yellow-sm">
+                  📅 Sábado - 01/11
                 </div>
-                <span className="text-muted-foreground font-medium">5 horas de correção ao vivo</span>
+                <span className="text-muted-foreground font-semibold text-lg">⏱️ 5 horas de correção ao vivo</span>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
                 <FeatureCard
@@ -231,9 +286,12 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="text-center animate-fade-in">
-              <Button onClick={scrollToCheckout} variant="cta" size="lg" className="text-lg px-12 py-7">
-                Quero participar dos dois dias com desconto especial
+            <div className="text-center animate-fade-in pt-8">
+              <Button 
+                onClick={scrollToCheckout} 
+                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold text-lg md:text-xl px-12 py-7 shadow-yellow hover:shadow-yellow-sm hover:scale-105 transition-all duration-300"
+              >
+                🎓 Quero participar dos dois dias completos
               </Button>
             </div>
           </div>
@@ -241,19 +299,22 @@ const Index = () => {
       </section>
 
       {/* Resultados Reais */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-24 md:py-32 bg-gradient-to-b from-background to-muted/20">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto space-y-12">
-            <div className="text-center space-y-4 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold">
-                Eles conseguiram — e <span className="text-primary">você também pode</span>
+          <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-6 animate-fade-in max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Eles conseguiram — e{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">
+                  você também pode
+                </span>
               </h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl md:text-2xl text-muted-foreground">
                 Veja os resultados de quem confiou no método
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-8">
               <TestimonialCard
                 name="Ana Clara"
                 score={980}
@@ -278,15 +339,18 @@ const Index = () => {
       </section>
 
       {/* Relatos com Foto - Seção 1 */}
-      <section className="py-20 bg-background">
+      <section className="py-24 md:py-32 bg-gradient-to-b from-muted/20 to-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto space-y-12">
-            <div className="text-center space-y-4 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold">
-                Histórias de <span className="text-primary">Sucesso</span>
+          <div className="max-w-7xl mx-auto space-y-16">
+            <div className="text-center space-y-6 animate-fade-in max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Histórias de{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">
+                  Sucesso
+                </span>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Conheça quem transformou o sonho em realidade com o método da professora Marcela
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                Conheça quem transformou o sonho em realidade com o método da professora Jéssica
               </p>
             </div>
 
@@ -398,10 +462,10 @@ const Index = () => {
               />
             </div>
 
-            <div className="text-center animate-fade-in">
-              <button className="text-primary font-semibold text-lg hover:underline inline-flex items-center gap-2 hover:gap-3 transition-all">
-                Ver mais histórias de sucesso
-                <span className="text-xl">→</span>
+            <div className="text-center animate-fade-in pt-8">
+              <button className="text-primary font-bold text-lg hover:text-primary/80 inline-flex items-center gap-3 hover:gap-4 transition-all duration-300 group">
+                <span>✨ Ver mais histórias de sucesso</span>
+                <span className="text-2xl group-hover:translate-x-1 transition-transform">→</span>
               </button>
             </div>
           </div>
@@ -409,15 +473,18 @@ const Index = () => {
       </section>
 
       {/* Vídeos de Depoimentos - Seção 2 */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-24 md:py-32 bg-gradient-to-b from-background to-muted/20">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto space-y-12">
-            <div className="text-center space-y-4 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold">
-                Eles chegaram lá — e <span className="text-secondary">você também pode!</span>
+          <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-6 animate-fade-in max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Eles chegaram lá — e{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-secondary/70">
+                  você também pode!
+                </span>
               </h2>
-              <p className="text-xl text-muted-foreground">
-                Assista aos depoimentos de quem viveu essa transformação
+              <p className="text-xl md:text-2xl text-muted-foreground">
+                🎬 Assista aos depoimentos de quem viveu essa transformação
               </p>
             </div>
 
@@ -460,38 +527,39 @@ const Index = () => {
       </section>
 
       {/* Comparativo */}
-      <section className="py-20 bg-background">
+      <section className="py-24 md:py-32 bg-gradient-to-b from-muted/20 to-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Aprenda em <span className="text-primary">4h</span> o que não se aprende em{" "}
-              <span className="text-muted-foreground line-through">1 ano de cursinho</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Sem enrolação, sem promessas vazias. Apenas o que realmente importa para alcançar a
-              nota máxima.
-            </p>
+          <div className="max-w-5xl mx-auto text-center space-y-12 animate-fade-in">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Aprenda em <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">4 horas</span> o que não se aprende em{" "}
+                <span className="text-muted-foreground/60 line-through">1 ano de cursinho</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Sem enrolação, sem promessas vazias. Apenas o que <span className="font-semibold text-foreground">realmente importa</span> para alcançar a nota máxima.
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-4 gap-6 pt-8">
-              <div className="bg-card rounded-xl p-6 shadow-soft border border-border animate-scale-in">
-                <Clock className="w-10 h-10 text-primary mx-auto mb-4" />
-                <h3 className="font-bold mb-2">Tempo</h3>
-                <p className="text-sm text-muted-foreground">Apenas 4 horas focadas vs 1 ano inteiro</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
+              <div className="bg-gradient-to-br from-card to-muted/20 rounded-2xl p-8 shadow-soft border border-border hover:shadow-cyan-sm hover:border-primary/20 transition-all duration-300 animate-scale-in group">
+                <Clock className="w-12 h-12 text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="font-bold text-lg mb-3">⚡ Tempo</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Apenas 4 horas focadas vs 1 ano inteiro</p>
               </div>
-              <div className="bg-card rounded-xl p-6 shadow-soft border border-border animate-scale-in">
-                <Target className="w-10 h-10 text-primary mx-auto mb-4" />
-                <h3 className="font-bold mb-2">Foco</h3>
-                <p className="text-sm text-muted-foreground">Direto ao ponto, sem enrolação</p>
+              <div className="bg-gradient-to-br from-card to-muted/20 rounded-2xl p-8 shadow-soft border border-border hover:shadow-cyan-sm hover:border-primary/20 transition-all duration-300 animate-scale-in group">
+                <Target className="w-12 h-12 text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="font-bold text-lg mb-3">🎯 Foco</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Direto ao ponto, sem enrolação</p>
               </div>
-              <div className="bg-card rounded-xl p-6 shadow-soft border border-border animate-scale-in">
-                <Sparkles className="w-10 h-10 text-primary mx-auto mb-4" />
-                <h3 className="font-bold mb-2">Clareza</h3>
-                <p className="text-sm text-muted-foreground">Método simples e comprovado</p>
+              <div className="bg-gradient-to-br from-card to-muted/20 rounded-2xl p-8 shadow-soft border border-border hover:shadow-yellow-sm hover:border-secondary/20 transition-all duration-300 animate-scale-in group">
+                <Sparkles className="w-12 h-12 text-secondary mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="font-bold text-lg mb-3">✨ Clareza</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Método simples e comprovado</p>
               </div>
-              <div className="bg-card rounded-xl p-6 shadow-soft border border-border animate-scale-in">
-                <TrendingUp className="w-10 h-10 text-primary mx-auto mb-4" />
-                <h3 className="font-bold mb-2">Resultados</h3>
-                <p className="text-sm text-muted-foreground">+2.000 alunos aprovados</p>
+              <div className="bg-gradient-to-br from-card to-muted/20 rounded-2xl p-8 shadow-soft border border-border hover:shadow-cyan-sm hover:border-primary/20 transition-all duration-300 animate-scale-in group">
+                <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="font-bold text-lg mb-3">📈 Resultados</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">+2.000 alunos aprovados</p>
               </div>
             </div>
           </div>
@@ -499,17 +567,28 @@ const Index = () => {
       </section>
 
       {/* Investimento */}
-      <section id="checkout" className="py-20 bg-gradient-to-b from-muted/30 to-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto space-y-12">
-            <div className="text-center space-y-4 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold">
-                Um investimento que <span className="text-primary">muda seu futuro</span>
+      <section id="checkout" className="py-24 md:py-32 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
+        {/* Decorative glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto space-y-16">
+            <div className="text-center space-y-6 animate-fade-in">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Um investimento que{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">
+                  muda seu futuro
+                </span>
               </h2>
+              <p className="text-xl md:text-2xl text-muted-foreground">
+                Acesso completo + bônus exclusivos por um valor único
+              </p>
             </div>
 
-            <div className="bg-card rounded-3xl p-8 md:p-12 shadow-cyan border-2 border-primary/20 animate-scale-in">
-              <div className="space-y-6">
+            <div className="bg-gradient-to-br from-card via-card to-primary/5 rounded-3xl p-8 md:p-14 shadow-premium border-2 border-primary/30 animate-scale-in backdrop-blur-sm">
+              <div className="space-y-8">
                 <div className="flex justify-between items-center pb-4 border-b border-border">
                   <span className="text-lg">Aulão Completo (4h)</span>
                   <span className="text-lg font-bold line-through text-muted-foreground">
@@ -546,25 +625,48 @@ const Index = () => {
                   </span>
                 </div>
 
-                <div className="bg-secondary/10 rounded-2xl p-8 text-center space-y-4 border-2 border-secondary/30">
-                  <p className="text-lg text-muted-foreground">Você paga hoje apenas</p>
-                  <div className="space-y-2">
-                    <p className="text-6xl font-bold text-primary">R$ 39,90</p>
-                    <p className="text-sm text-muted-foreground">em até 12x sem juros</p>
+                <div className="bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-3xl p-10 text-center space-y-6 border-2 border-secondary/40 shadow-yellow-sm">
+                  <p className="text-lg md:text-xl text-muted-foreground font-medium">💰 Você paga hoje apenas</p>
+                  <div className="space-y-3">
+                    <p className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80">
+                      R$ 39,90
+                    </p>
+                    <p className="text-base text-muted-foreground">ou 12x de R$ 3,99 sem juros</p>
                   </div>
-                  <p className="text-base text-muted-foreground max-w-md mx-auto">
-                    Menos que dois lanches. Menos que uma ida ao cinema.
-                    <br />
-                    <span className="font-bold text-foreground">
-                      Para um conteúdo que pode mudar seu futuro.
-                    </span>
-                  </p>
+                  <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 max-w-lg mx-auto">
+                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                      Menos que <span className="font-bold text-foreground">dois lanches</span>. Menos que uma <span className="font-bold text-foreground">ida ao cinema</span>.
+                      <br />
+                      <span className="text-lg font-bold text-primary mt-2 block">
+                        Para um conteúdo que pode mudar seu futuro.
+                      </span>
+                    </p>
+                  </div>
                 </div>
 
-                <Button variant="cta" size="lg" className="w-full text-xl py-8">
-                  <DollarSign className="w-6 h-6" />
-                  Garantir minha vaga agora por R$ 39,90
+                <Button 
+                  className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground font-bold text-xl md:text-2xl py-8 md:py-10 shadow-cyan hover:shadow-premium hover:scale-[1.02] transition-all duration-300 animate-pulse-soft"
+                >
+                  <DollarSign className="w-7 h-7" />
+                  💎 Garantir minha vaga agora por R$ 39,90
                 </Button>
+
+                <div className="text-center space-y-3 pt-4">
+                  <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground flex-wrap">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                      <span>🔒 Pagamento seguro</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                      <span>⚡ Acesso imediato</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                      <span>♾️ Vitalício</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -572,35 +674,50 @@ const Index = () => {
       </section>
 
       {/* Urgência Final */}
-      <section className="py-20 bg-accent text-accent-foreground">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-8 animate-pulse-soft">
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              As vagas estão se esgotando
-            </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Garanta seu acesso antes que o preço suba ou as vagas acabem
-            </p>
-            <div className="pt-4">
+      <section className="py-24 md:py-32 bg-gradient-to-br from-accent via-accent to-accent/90 text-accent-foreground relative overflow-hidden">
+        {/* Animated glow effect */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-soft"></div>
+          <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-10">
+            <div className="space-y-6 animate-fade-in">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                ⏰ As vagas estão se esgotando
+              </h2>
+              <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+                Garanta seu acesso antes que o preço suba ou as vagas acabem
+              </p>
+            </div>
+            
+            <div className="pt-4 animate-scale-in">
               <CountdownTimer />
             </div>
+            
             <Button
               onClick={scrollToCheckout}
-              variant="cta"
-              size="lg"
-              className="text-xl px-12 py-8 hover:scale-110"
+              className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold text-xl md:text-2xl px-14 py-8 shadow-yellow-sm hover:shadow-yellow hover:scale-110 transition-all duration-300 animate-pulse-soft"
             >
-              Não perder essa oportunidade
+              🚀 Não perder essa oportunidade
             </Button>
+
+            <p className="text-white/80 text-sm md:text-base pt-4">
+              ✅ Mais de <span className="font-bold text-white">500 vagas</span> já foram preenchidas
+            </p>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 bg-background border-t border-border">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground">
-            © 2025 Redação Nota 1000 - Todos os direitos reservados
+      <footer className="py-12 bg-gradient-to-b from-background to-muted/20 border-t border-border">
+        <div className="container mx-auto px-4 text-center space-y-4">
+          <p className="text-muted-foreground text-sm md:text-base">
+            © 2025 Redação Nota 1000 com Professora Jéssica - Todos os direitos reservados
+          </p>
+          <p className="text-muted-foreground/70 text-xs">
+            CNPJ: 00.000.000/0001-00 | Contato: contato@redacaonota1000.com
           </p>
         </div>
       </footer>
